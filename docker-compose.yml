@@ -25,13 +25,13 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./bd/inicio.sql:/docker-entrypoint-initdb.d/inicio.sql
+      - ./baseDatos/init.sql:/docker-entrypoint-initdb.d/inicio.sql
     command: --init-file /docker-entrypoint-initdb.d/inicio.sql
     networks:
       mynetwork:
         ipv4_address: 192.168.10.3
 
- container3:
+  container3:
     image: ubuntu
     container_name: container3
     volumes:
@@ -42,7 +42,8 @@ services:
     networks:
       mynetwork:
         ipv4_address: 192.168.10.4
-        
+
+networks:
   mynetwork:
     ipam:
       driver: default
